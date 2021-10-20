@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.own.freshtoyou.R;
 import com.own.freshtoyou.base.BaseFragment;
+import com.own.freshtoyou.data.RAM;
 import com.own.freshtoyou.util.BusUtil.BusUtil;
 import com.own.freshtoyou.util.BusUtil.EventUtil;
 import com.own.freshtoyou.util.BusUtil.ThreadModel;
@@ -29,6 +30,9 @@ import static com.own.freshtoyou.util.Other.makeStatusBarTransparent;
 
 public class CheckFragment extends BaseFragment{
 
+    private TextView check_t_text;
+    private TextView check_h_text;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -41,7 +45,31 @@ public class CheckFragment extends BaseFragment{
 
     @Override
     public void initView() {
-
+        check_t_text = getActivity().findViewById(R.id.check_t_text);
+        check_h_text = getActivity().findViewById(R.id.check_h_text);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try{
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                check_t_text.setText(RAM.getT());
+                                check_h_text.setText(RAM.getH());
+                            }
+                        });
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 
     @Override

@@ -190,6 +190,7 @@
                         android:layout_height="20dp">
                     </ImageView>
                     <TextView
+                        android:id="@+id/check_t_text"
                         android:layout_width="100dp"
                         android:layout_height="25dp"
                         android:textSize="12dp"
@@ -236,6 +237,7 @@
                         android:layout_height="18dp">
                     </ImageView>
                     <TextView
+                        android:id="@+id/check_h_text"
                         android:layout_width="100dp"
                         android:layout_height="25dp"
                         android:textSize="12dp"

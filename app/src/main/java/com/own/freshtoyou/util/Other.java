@@ -6,6 +6,10 @@ import android.os.Build;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.net.ServerSocket;
 
 public class Other {
     /**
@@ -25,4 +29,6 @@ public class Other {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }
+
+
 }
